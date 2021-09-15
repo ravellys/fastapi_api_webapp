@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  database:
+    container_name: fastapi_db
+    image: postgres
+    restart: always
+    volumes:
+      - ./.pgdata:/var/lib/postgresql/data
+    environment:
+      - LC_ALL=C.UTF-8
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=postgres
+    ports:
+      - 5432:5432
+
+
+# para rodar
+# sudo docker-compose up
