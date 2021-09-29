@@ -3,5 +3,5 @@ from apis.version1 import route_users, route_jobs
 
 api_router = APIRouter()
 
-api_router.include_router(route_users.router, prefix='/users', tags=["users"])
-api_router.include_router(route_jobs.router, prefix='/job', tags=["Jobs"])
+api_router.include_router(route_users.router, prefix='/v1/users', tags=["users"])
+api_router.include_router(route_jobs.router, prefix='/v1/jobs', tags=["Jobs"])
