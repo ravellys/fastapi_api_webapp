@@ -12,7 +12,7 @@ router = APIRouter()
 
 @router.post("/", response_model=ShowJob)
 def create_job(job: JobCreate, db: Session = Depends(get_db)):
-    owner_id = 8
+    owner_id = 1
     job = create_new_job(job=job, db=db, owner_id=owner_id)
     return job
 
@@ -33,7 +33,7 @@ def retreive_all_jobs(db: Session = Depends(get_db)):
 
 @router.put("/{id}")
 def put_job(id: int, job: JobCreate, db: Session = Depends(get_db)):
-    owner_id = 8
+    owner_id = 1
     value = update_job_by_id(id, job, db, owner_id)
     if not value:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Job with id {id} does not exist")
@@ -42,7 +42,7 @@ def put_job(id: int, job: JobCreate, db: Session = Depends(get_db)):
 
 @router.delete("/{id}")
 def delete_job(id: int, db: Session = Depends(get_db)):
-    owner_id = 8
+    owner_id = 1
     value = delete_job_by_id(id, db, owner_id)
     if not value:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Job with id {id} does not exist")

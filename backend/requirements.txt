@@ -17,3 +17,4 @@ passlib[bcrypt]
 # test
 requests
 pytest
+pytest-cov
