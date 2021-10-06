@@ -18,3 +18,6 @@ passlib[bcrypt]
 requests
 pytest
 pytest-cov
+
+# for JWT token
+python-jose

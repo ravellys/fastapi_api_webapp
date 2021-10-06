@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from schemas.teste import Teste
@@ -11,8 +11,11 @@ router = APIRouter()
 
 @router.post("/", response_model=ShowUser)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    user = create_new_user(user, db)
-    return user
+    try:
+        user = create_new_user(user, db)
+        return user
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail=f"Error: {e}")
 
 
 @router.post("/teste")
